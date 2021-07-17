@@ -1,0 +1,19 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"colorize": "1.0.5",
+		"commandr": "0.2.0",
+		"datefmt": "1.0.4",
+		"ddmp": "0.0.1-0.dev.3",
+		"dlib": "0.19.2",
+		"dmech": "0.4.1",
+		"dray": "3.5.0-r4",
+		"fluent-asserts": "0.13.3",
+		"jar": "0.1.0",
+		"libdparse": "0.14.0",
+		"reng": "0.4.2",
+		"silly": "1.0.2",
+		"stdx-allocator": "2.77.5",
+		"witchcraft": "0.1.9"
+	}
+}

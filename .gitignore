@@ -1,24 +1,16 @@
-# Compiled Object files
-*.o
-*.obj
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Compiled Static libraries
-*.a
-*.lib
-
-# Executables
-*.exe
-
-# DUB
+captures.png
 .dub
 docs.json
 __dummy.html
 docs/
-
-# Code coverage
+/flatten
+flatten.so
+flatten.dylib
+flatten.dll
+flatten.a
+flatten.lib
+flatten-test-*
+*.exe
+*.o
+*.obj
 *.lst
