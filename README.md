@@ -41,6 +41,10 @@ for example:
 ./flatten ~/Downloads/mymodel1.glb captures.png -d 64x64 -w 4 -f 16 -l 5.5 -r 90,0,0 -c 14,14,14 -g 0,360 -n
 ```
 
+### tips
+
+- the camera will focus on the object origin, if your object looks cut off, first adjust the scale, then maybe adjust the object origin in blender so that it appears properly in the frame
+
 ## build
 
 very easy, simply:
