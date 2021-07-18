@@ -4,9 +4,9 @@ a tool for rendering 3d objects to spritesheets
 
 ## example
 
-this is a glTF 2.0 model rendered at different angles into a spritesheet.
+this is a glTF 2.0 (.glb) model rendered at different angles into a spritesheet.
 
-![ex1](media/ex1.png)
+<img src="media/ex2.png" width="512">
 
 ## usage
 
