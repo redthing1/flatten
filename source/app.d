@@ -21,6 +21,7 @@ class Game : Core {
 	public static float scale;
 	public static Vector3 rotation;
 	public static Vector3 campos;
+	public static Vector2 capangles; // angle capture range (start and end angle)
 	public static bool noquit = true;
 
 	public static bool saved_capture = false;
@@ -47,6 +48,7 @@ void main(string[] args) {
 		.add(new Option("l", "scale", "").defaultValue("1"))
 		.add(new Option("r", "rot", "").defaultValue("90,0,0"))
 		.add(new Option("c", "campos", "").defaultValue("10,10,10"))
+		.add(new Option("g", "capangles", "").defaultValue("0,360"))
 		.add(new Flag("n", "noquit", ""))
 		.parse(args);
 
@@ -62,6 +64,9 @@ void main(string[] args) {
 	int cpos_x, cpos_y, cpos_z;
 	formattedRead(a.option("campos"), "%d,%d,%d", cpos_x, cpos_y, cpos_z);
 	Game.campos = Vector3(cpos_x, cpos_y, cpos_z);
+	int cpa_s, cpa_e;
+	formattedRead(a.option("capangles"), "%d,%d", cpa_s, cpa_e);
+	Game.capangles = Vector2((cast(float) cpa_s) * raylib.DEG2RAD, (cast(float) cpa_e) * raylib.DEG2RAD);
 
 	Game.noquit = a.flag("noquit");
 

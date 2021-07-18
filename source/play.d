@@ -69,8 +69,9 @@ class PlayScene : Scene3D {
                 writefln("cap: %s (f: %s)", captured_frames.length, frame_num);
                 captured_frames ~= frame;
 
+                auto angle_range = Game.capangles.y - Game.capangles.x; // angle range
                 cam.entity.get_component!CameraOrbit()
-                    .set_xz_angle(2 * PI * (captured_frames.length / cast(float) Game.frames));
+                    .set_xz_angle(Game.capangles.x + (angle_range * (captured_frames.length / cast(float) Game.frames)));
                 // }
             } else if (!Game.saved_capture) {
                 // done capturing
