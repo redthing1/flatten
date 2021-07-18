@@ -33,6 +33,7 @@ class PlayScene : Scene3D {
         // set the camera position
         // cam.entity.position = Vector3(10, 12, 10);
         cam.entity.position = Game.campos;
+        cam.fov = Game.camfov;
 
         // add a camera to look at the thing
         // cam.entity.add_component(new CameraOrbit(thing, PI * (15.0 / 16)));

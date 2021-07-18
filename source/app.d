@@ -19,6 +19,7 @@ class Game : Core {
 	public static int sheet_width;
 	public static int frames;
 	public static float scale;
+	public static float camfov;
 	public static Vector3 rotation;
 	public static Vector3 campos;
 	public static Vector2 capangles; // angle capture range (start and end angle)
@@ -46,6 +47,7 @@ void main(string[] args) {
 		.add(new Option("w", "width", "spritesheet width (how many frames per row)").defaultValue("4"))
 		.add(new Option("f", "frames", "number of frames to capture").defaultValue("16"))
 		.add(new Option("l", "scale", "scale of object").defaultValue("1"))
+		.add(new Option(null, "fov", "camera fov (in deg)").defaultValue("45"))
 		.add(new Option("r", "rot", "rotation of object ('X,Y,Z') (euler angles in deg)").defaultValue("90,0,0"))
 		.add(new Option("c", "campos", "position of camera ('X,Y,Z')").defaultValue("10,10,10"))
 		.add(new Option("g", "capangles", "angle range of the capture ('A,B') (in deg)").defaultValue("0,360"))
@@ -58,6 +60,9 @@ void main(string[] args) {
 	formattedRead(a.option("width"), "%d", Game.sheet_width);
 	formattedRead(a.option("frames"), "%d", Game.frames);
 	formattedRead(a.option("scale"), "%f", Game.scale);
+	int deg_fov;
+	formattedRead(a.option("fov"), "%d", deg_fov);
+	Game.camfov = (cast(float) deg_fov) * raylib.DEG2RAD;
 	int rot_x, rot_y, rot_z;
 	formattedRead(a.option("rot"), "%d,%d,%d", rot_x, rot_y, rot_z);
 	Game.rotation = Vector3((cast(float) rot_x) * raylib.DEG2RAD, (cast(float) rot_y) * raylib.DEG2RAD, (cast(float) rot_z) * raylib.DEG2RAD);
