@@ -39,17 +39,17 @@ class Game : Core {
 }
 
 void main(string[] args) {
-	auto a = new Program("flatten", "0.1").summary("flatten").author("no")
-		.add(new Argument("asset", ""))
-		.add(new Argument("output", ""))
-		.add(new Option("d", "dimens", "").defaultValue("64x64"))
-		.add(new Option("w", "width", "").defaultValue("4"))
-		.add(new Option("f", "frames", "").defaultValue("16"))
-		.add(new Option("l", "scale", "").defaultValue("1"))
-		.add(new Option("r", "rot", "").defaultValue("90,0,0"))
-		.add(new Option("c", "campos", "").defaultValue("10,10,10"))
-		.add(new Option("g", "capangles", "").defaultValue("0,360"))
-		.add(new Flag("n", "noquit", ""))
+	auto a = new Program("flatten", "0.1").summary("a tool for rendering 3d objects to spritesheets").author("xdrie")
+		.add(new Argument("asset", "path to 3d asset (.obj or ,glb)"))
+		.add(new Argument("output", "path to output spritesheet (.png)"))
+		.add(new Option("d", "dimens", "render dimensions").defaultValue("64x64"))
+		.add(new Option("w", "width", "spritesheet width (how many frames per row)").defaultValue("4"))
+		.add(new Option("f", "frames", "number of frames to capture").defaultValue("16"))
+		.add(new Option("l", "scale", "scale of object").defaultValue("1"))
+		.add(new Option("r", "rot", "rotation of object (euler angles in deg)").defaultValue("90,0,0"))
+		.add(new Option("c", "campos", "position of camera").defaultValue("10,10,10"))
+		.add(new Option("g", "capangles", "angle range of the capture (in deg)").defaultValue("0,360"))
+		.add(new Flag("n", "noquit", "don't close render immediately after capture"))
 		.parse(args);
 
 	Game.asset = a.arg("asset");
