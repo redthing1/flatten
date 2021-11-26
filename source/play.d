@@ -61,7 +61,7 @@ class PlayScene : Scene3D {
             if (captured_frames.length < Game.frames) {
                 // if (frame_num % CAPTURE_FRAMESKIP == 0) {
                 // capture frame data
-                auto frame = raylib.GetScreenData();
+                auto frame = raylib.LoadImageFromScreen();
 
                 // correct for capture (is upside down??)
 
@@ -94,7 +94,7 @@ class PlayScene : Scene3D {
                 raylib.EndDrawing();
                 raylib.EndTextureMode();
 
-                auto target_img = raylib.GetTextureData(target.texture);
+                auto target_img = raylib.LoadImageFromTexture(target.texture);
                 raylib.ImageFlipVertical(&target_img);
                 raylib.ExportImage(target_img, Game.outfile.c_str());
 
@@ -114,7 +114,7 @@ class PlayScene : Scene3D {
             
         }
 
-        if (Input.is_mouse_pressed(MouseButton.MOUSE_LEFT_BUTTON)) {
+        if (Input.is_mouse_pressed(MouseButton.MOUSE_BUTTON_LEFT)) {
             if (Input.is_cursor_locked) {
                 Input.unlock_cursor();
             } else {
