@@ -20,7 +20,8 @@ class Game : Core {
 	public static int frames;
 	public static float scale;
 	public static float camfov;
-	public static Vector3 rotation;
+	public static Vector3 obj_pos;
+	public static Vector3 obj_rot;
 	public static Vector3 campos;
 	public static Vector2 capangles; // angle capture range (start and end angle)
 	public static bool noquit = true;
@@ -48,6 +49,7 @@ void main(string[] args) {
 		.add(new Option("f", "frames", "number of frames to capture").defaultValue("16"))
 		.add(new Option("l", "scale", "scale of object").defaultValue("1"))
 		.add(new Option(null, "fov", "camera fov (in deg)").defaultValue("45"))
+		.add(new Option("p", "pos", "position of object ('X,Y,Z')").defaultValue("0,0,0"))
 		.add(new Option("r", "rot", "rotation of object ('X,Y,Z') (euler angles in deg)").defaultValue("90,0,0"))
 		.add(new Option("c", "campos", "position of camera ('X,Y,Z')").defaultValue("10,10,10"))
 		.add(new Option("g", "capangles", "angle range of the capture ('A,B') (in deg)").defaultValue("0,360"))
@@ -63,9 +65,15 @@ void main(string[] args) {
 	int deg_fov;
 	formattedRead(a.option("fov"), "%d", deg_fov);
 	Game.camfov = (cast(float) deg_fov) * raylib.DEG2RAD;
+
+	int pos_x, pos_y, pos_z;
+	formattedRead(a.option("pos"), "%d,%d,%d", pos_x, pos_y, pos_z);
+	Game.obj_pos = Vector3(pos_x, pos_y, pos_z);
+	
 	int rot_x, rot_y, rot_z;
 	formattedRead(a.option("rot"), "%d,%d,%d", rot_x, rot_y, rot_z);
-	Game.rotation = Vector3((cast(float) rot_x) * raylib.DEG2RAD, (cast(float) rot_y) * raylib.DEG2RAD, (cast(float) rot_z) * raylib.DEG2RAD);
+	Game.obj_rot = Vector3((cast(float) rot_x) * raylib.DEG2RAD, (cast(float) rot_y) * raylib.DEG2RAD, (cast(float) rot_z) * raylib.DEG2RAD);
+
 	int cpos_x, cpos_y, cpos_z;
 	formattedRead(a.option("campos"), "%d,%d,%d", cpos_x, cpos_y, cpos_z);
 	Game.campos = Vector3(cpos_x, cpos_y, cpos_z);
