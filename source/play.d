@@ -22,9 +22,10 @@ class PlayScene : Scene3D {
 
         start_frame = Time.frame_count + 2; // delay
 
-        auto thing = create_entity("thing", Game.obj_pos);
+        auto thing = create_entity("thing", Vector3.zero);
         auto thing_asset = Core.content.load_model(Game.asset);
         auto thing_model = thing.add_component(new Model3D(thing_asset));
+        thing_model.offset = thing.transform.position + Game.obj_pos;
         // thing_model.transform.scale = Vector3(4, 4, 4);
         thing_model.transform.scale = Vector3(Game.scale, Game.scale, Game.scale);
         // thing_model.transform.orientation = Vector3(C_PI_2, 0, 0); // euler angles
